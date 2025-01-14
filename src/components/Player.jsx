@@ -16,12 +16,12 @@ const Player = () => {
     seekSong,
   } = useContext(PlayerContext);
   return (
-    <div className="h-[10%] bg-black flex justify-between items-center text-white px-4">
-      <div className="hidden lg:flex items-center gap-4">
+    <div className="md:h-[10%] h-[15%] bg-black flex justify-between items-center text-white px-4">
+      <div className="flex items-center gap-4">
         <img className="w-12" src={track.image} alt="song-image" />
         <div>
-          <p>{track.name}</p>
-          <p>{track.desc.slice(0, 12)}</p>
+          <p className="hidden lg:block">{track.name}</p>
+          <p className="hidden lg:block">{track.desc.slice(0, 12)}</p>
         </div>
       </div>
       <div className=" flex flex-col items-center gap-1 m-auto">
@@ -66,9 +66,9 @@ const Player = () => {
           />
         </div>
         <div className="flex items-center gap-5">
-          <p>
-            {time.currentTime.minute} : {time.currentTime.second}
-          </p>
+          <div className="text-sm lg:text-[16px] flex ml-3">
+            <p>{time.currentTime.minute}</p> :<p>{time.currentTime.second}</p>
+          </div>
           <div
             onClick={seekSong}
             ref={seekBg}
@@ -84,7 +84,7 @@ const Player = () => {
           </p>
         </div>
       </div>
-      <div className="lg:flex hidden  items-center gap-2 opacity-75">
+      <div className="lg:flex hidden items-center gap-2 opacity-75">
         <img className="w-4" src={assets.plays_icon} alt="plays-icon" />
         <img className="w-4" src={assets.mic_icon} alt="plays-icon" />
         <img className="w-4" src={assets.queue_icon} alt="plays-icon" />
